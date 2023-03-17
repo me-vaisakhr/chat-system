@@ -1,0 +1,28 @@
+$spacing:12px;
+$padding:10px;
+$radius:5px;
+$bg-color:#18122B;
+$primary-color:#342639;
+
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: $spacing;
+    overflow: hidden;
+    background-color: $bg-color;
+    #{&}__chat_section{
+        flex-grow: 8;
+        background-color: $primary-color;
+        color: white;
+        border-radius: $radius;
+        padding: $padding;
+        overflow-y: auto;
+    }
+    #{&}__chating_section{
+        display: flex;
+        flex-direction: row;
+        padding: $padding 0;
+        gap: $spacing;
+    }
+}

@@ -1,0 +1,14 @@
+$padding:10px;
+$radius:5px;
+
+.text_input{
+    width: 100%;
+    border: 0;
+    outline: none;
+    padding: 0 $padding;
+    border-radius: $radius; 
+};
+
+.chat_button{
+    padding: $padding;
+};
