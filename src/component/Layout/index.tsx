@@ -19,7 +19,7 @@ const Layout = () => {
   const [isLoading, setLoader] = useState<boolean>(false);
   const [chats, setChat] = useState<ChatProps[]>([
     {
-      message: "Ask me your doubts!!",
+      message: "Ask your doubts!!",
       isQuestion: false,
     },
   ]);
