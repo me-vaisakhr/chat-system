@@ -11,6 +11,12 @@ $primary-color:#342639;
     padding: $spacing;
     overflow: hidden;
     background-color: $bg-color;
+    #{&}__chat_header{
+        font-size: 24px;
+        font-weight: 600;
+        padding: $spacing 0;
+        color: white;
+    }
     #{&}__chat_section{
         flex-grow: 8;
         background-color: $primary-color;

@@ -9,6 +9,12 @@ export interface ChatProps {
   isQuestion: boolean;
 }
 
+interface Answer {
+  input: string;
+  output: string;
+  explanantion: string;
+}
+
 const Layout = () => {
   const [isLoading, setLoader] = useState<boolean>(false);
   const [chats, setChat] = useState<ChatProps[]>([
@@ -19,11 +25,29 @@ const Layout = () => {
   ]);
 
   async function fetchAnswer(question: string) {
+    setLoader(true);
     instance
       .post("/language-learning", { question })
       .then((response) => response.data)
-      .then((data) => {
-        console.info({ data });
+      .then((data: Answer) => {
+        if (data) {
+          const { output, explanantion } = data;
+          if (output) {
+            setChat((chats) => [
+              ...chats,
+              { message: output, isQuestion: false },
+            ]);
+          }
+          if (explanantion) {
+            setTimeout(() => {
+              setChat((chats) => [
+                ...chats,
+                { message: explanantion, isQuestion: false },
+              ]);
+            }, 500);
+          }
+        }
+        setLoader(false);
       })
       .catch((error) => console.error(error));
   }
@@ -39,6 +63,9 @@ const Layout = () => {
 
   return (
     <main className="container">
+      <section className="container__chat_header">
+        <p>learn english bot</p>
+      </section>
       <section className="container__chat_section">
         <ChatSection chats={chats} />
       </section>
