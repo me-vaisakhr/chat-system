@@ -18,6 +18,23 @@ $answer-radius: 5px 0 5px 5px;
     background-color: $hover-color;
     cursor: pointer;
   }
+
+  .answer_text{
+    padding-bottom: $spacing;
+  }
+  .answer_actions{
+    padding-top: $spacing;
+    border-top: 1px solid;
+    display: flex;
+    justify-content: end;
+    .answer_voice_play{
+      border: none;
+      background-color: inherit;
+      outline: none;
+      color: inherit;
+      padding: 0;
+    }
+  }
 }
 
 .question_message_bubble {

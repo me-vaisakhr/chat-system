@@ -1,5 +1,6 @@
 import React, { ChangeEvent, ChangeEventHandler, FC, useState } from "react";
 import "./index.scss";
+import InputWithRecord from "./InputWithRecord";
 
 interface ChattingSectionProps {
   isLoading?: boolean;
@@ -22,17 +23,16 @@ const ChattingSection: FC<ChattingSectionProps> = ({
   };
   return (
     <>
-      <input
+      <InputWithRecord
         value={question}
-        className="text_input"
         placeholder="ask me anything"
-        autoFocus
-        disabled={isLoading}
+        disable={isLoading}
         onChange={handleQuestionChange}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            handleSubmit();
-          }
+        onEnterPress={() => {
+          handleSubmit();
+        }}
+        onSpeechRecognizedResult={(question) => {
+          setQuestion(question);
         }}
       />
       <button className="chat_button" onClick={handleSubmit}>
